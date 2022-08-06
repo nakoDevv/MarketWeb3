@@ -6,11 +6,12 @@ import { MdVerified } from 'react-icons/md'
 import TopNavbarLayout from '../../layouts/TopNavbarLayout'
 import CollectionStats from './CollectionStats'
 import { collectionData } from '../../static/collections'
-// import Listings from './Listings'
-
+import Listings from './Listings'
+import ListingsHome from './ListingsHome'
+import imgBlack from '../../assets/black.png'
 const style = {
   wrapper: `flex flex-col dark:bg-[#202226] relative flex flex-col`,
-  container: `relative flex h-[650px] flex-col`,
+  container: `relative flex h-[450px] flex-col`,
   bannerContainer: `absolute h-1/3 w-full`,
   banner: `rounded-t-lg object-cover`,
   collectionInfoWrapper: `absolute inset-0 top-1/3 z-10 h-2/3 -translate-y-16`,
@@ -53,7 +54,7 @@ export default function Home() {
             <div className={style.bannerContainer}>
               <Image
                 className={style.banner}
-                src={collection?.banner_image_url}
+                src={imgBlack}
                 layout='fill'
                 alt='banner'
               />
@@ -64,7 +65,7 @@ export default function Home() {
                 <div className={style.collectionLogoContainer}>
                   <Image
                     className={style.collectionLogo}
-                    src={collection?.image_url}
+                    src={imgBlack}
                     height={128}
                     width={128}
                     alt='logo'
@@ -72,29 +73,19 @@ export default function Home() {
                 </div>
 
                 <div className={style.collectionInfo}>
-                  <div className={style.title}>{collection?.name}</div>
-
-                  <div className={style.creatorInfoContainer}>
-                    <div className={style.creator}>
-                      Created by{' '}
-                      <span className={style.creatorName}>
-                        {collection?.creator}
-                      </span>
-                    </div>
-                    <MdVerified className={style.verified} />
-                  </div>
+                  <div className={style.title}>QT Temple</div>
+                 
                 </div>
-
-                <CollectionStats stats={collection?.stats} />
-
                 <div className={style.descriptionContainer}>
-                  {collection?.description}
+                  QT Temple description
                 </div>
               </div>
             </div>
           </div>
-
-          {/* <Listings /> */}
+		  <div className={style.collectionInfo}>
+		  	<div className={style.title}>{collection?.name}</div>
+		  </div>
+          <ListingsHome />
         </div>
       </TopNavbarLayout>
     </div>

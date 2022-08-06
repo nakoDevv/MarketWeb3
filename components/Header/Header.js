@@ -13,6 +13,9 @@ import NavMenus from './NavMenus'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 
+import { useAddress, useMetamask } from "@thirdweb-dev/react"
+
+
 const Navbar = () => {
   const [mounted, setMounted] = useState(false)
 
@@ -20,6 +23,8 @@ const Navbar = () => {
     setMounted(true)
   }, [])
 
+  const connectMetamask = useMetamask()
+  const address = useAddress()
   const { systemTheme, theme, setTheme } = useTheme()
 
   const renderThemeChanger = () => {
@@ -59,10 +64,6 @@ const Navbar = () => {
       name: 'Resources',
       href: '#',
     },
-    {
-      name: 'Create',
-      href: '#',
-    },
   ]
 
   const style = {
@@ -76,6 +77,8 @@ const Navbar = () => {
     desktopIcons: `hidden lg:block`,
     mobileIcons: `sm:hidden`,
     tabletIcons: `lg:hidden`,
+	wrapperButton:`items-center justify-center`,
+	connectButton: `rounded-lg border border-black px-7 py-2 hover:bg-black hover:text-white`
   }
 
   return (
@@ -97,8 +100,13 @@ const Navbar = () => {
       </div>
 
       <div className={style.iconsContainer}>
-        <UserCircleIcon className={`${style.icons} ${style.desktopIcons}`} />
-        <CreditCardIcon className={`${style.icons} ${style.desktopIcons}`} />
+		{address ? (
+			<div>{ address.slice(0, 6).concat("...").concat(address.slice(-4)) }</div>
+		) : (
+			<div className={style.wrapperButton}>
+			<button className={style.connectButton} onClick={connectMetamask}>Connect Wallet</button>
+		</div> 
+		)}
         {renderThemeChanger()}
         <SearchIcon className={`${style.icons} ${style.mobileIcons}`} />
         <MenuIcon className={`${style.icons} ${style.tabletIcons}`} />
