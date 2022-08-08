@@ -12,9 +12,9 @@ import SearchInput from './SearchInput'
 import NavMenus from './NavMenus'
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-
-import { useAddress, useMetamask } from "@thirdweb-dev/react"
-
+import { useAddress, useMetamask, useDisconnect, useCoinbaseWallet, useWalletConnect } from "@thirdweb-dev/react"
+import Dropdown from './DropDown'
+import DropDownConnect from './DropDownConnect'
 
 const Navbar = () => {
   const [mounted, setMounted] = useState(false)
@@ -24,6 +24,9 @@ const Navbar = () => {
   }, [])
 
   const connectMetamask = useMetamask()
+  const disconnectWallet = useDisconnect()
+  const walletConnect = useWalletConnect()
+  const connectCoinbase = useCoinbaseWallet()
   const address = useAddress()
   const { systemTheme, theme, setTheme } = useTheme()
 
@@ -78,7 +81,7 @@ const Navbar = () => {
     mobileIcons: `sm:hidden`,
     tabletIcons: `lg:hidden`,
 	wrapperButton:`items-center justify-center`,
-	connectButton: `rounded-lg border border-black px-7 py-2 hover:bg-black hover:text-white`
+	connectButton: `rounded-lg border border-black px-7 py-2 hover:bg-black hover:text-white bg-black`
   }
 
   return (
@@ -101,11 +104,13 @@ const Navbar = () => {
 
       <div className={style.iconsContainer}>
 		{address ? (
-			<div>{ address.slice(0, 6).concat("...").concat(address.slice(-4)) }</div>
+			<>
+				<Dropdown address={address} disconnectWallet={disconnectWallet}/>
+			</>
 		) : (
 			<div className={style.wrapperButton}>
-			<button className={style.connectButton} onClick={connectMetamask}>Connect Wallet</button>
-		</div> 
+			<DropDownConnect connectMetamask={connectMetamask} walletConnect={walletConnect} connectCoinbase={connectCoinbase}/>
+			</div> 
 		)}
         {renderThemeChanger()}
         <SearchIcon className={`${style.icons} ${style.mobileIcons}`} />

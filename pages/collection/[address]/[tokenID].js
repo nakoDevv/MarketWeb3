@@ -41,7 +41,7 @@ const NFT = () => {
 			console.log(e)
 		}
 	}
-	console.log(listings?.asset?.image)
+
 	return (
 		<TopNavbarLayout>
 			<div className={style.wrapper}>
@@ -51,7 +51,7 @@ const NFT = () => {
 					<div className={style.nftContainer}>
 						<div className={style.leftContainer}>
 							<div className={style.leftElement}>
-								<NFTImage image={listings?.asset?.image}/>
+								<NFTImage image={listings?.asset?.image} listing={listings} />
 							</div>
 							<div className={style.leftElement}>
 								{/* {<NFTDetails />} */}

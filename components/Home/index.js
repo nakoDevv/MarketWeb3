@@ -11,7 +11,7 @@ import ListingsHome from './ListingsHome'
 import imgBlack from '../../assets/black.png'
 const style = {
   wrapper: `flex flex-col dark:bg-[#202226] relative flex flex-col`,
-  container: `relative flex h-[450px] flex-col`,
+  container: `relative flex h-[650px] flex-col`,
   bannerContainer: `absolute h-1/3 w-full`,
   banner: `rounded-t-lg object-cover`,
   collectionInfoWrapper: `absolute inset-0 top-1/3 z-10 h-2/3 -translate-y-16`,
@@ -51,40 +51,42 @@ export default function Home() {
       <TopNavbarLayout>
         <div className={style.wrapper}>
           <div className={style.container}>
-            <div className={style.bannerContainer}>
-              <Image
-                className={style.banner}
-                src={imgBlack}
-                layout='fill'
-                alt='banner'
-              />
-            </div>
+				
+				<div className={style.collectionInfoWrapper}>
+					<div className={style.collectionInfoContainer}>
+						<div className={style.collectionLogoContainer}>
+							<Image
+								className={style.collectionLogo}
+								src={imgBlack}
+								height={128}
+								width={128}
+								alt='logo'
+							/>
+						</div>
 
-            <div className={style.collectionInfoWrapper}>
-              <div className={style.collectionInfoContainer}>
-                <div className={style.collectionLogoContainer}>
-                  <Image
-                    className={style.collectionLogo}
-                    src={imgBlack}
-                    height={128}
-                    width={128}
-                    alt='logo'
-                  />
-                </div>
-
-                <div className={style.collectionInfo}>
-                  <div className={style.title}>QT Temple</div>
-                 
-                </div>
-                <div className={style.descriptionContainer}>
-                  QT Temple description
-                </div>
-              </div>
-            </div>
-          </div>
-		  <div className={style.collectionInfo}>
-		  	<div className={style.title}>{collection?.name}</div>
-		  </div>
+						<div className={style.collectionInfo}>
+						<div className={style.title}>QT Temple</div>
+						
+						</div>
+						<div className={style.descriptionContainer}>
+						QT Temple description
+						</div>
+					</div>
+				</div>
+				<div className={style.bannerContainer}>
+					<Image
+						className={style.banner}
+						src={imgBlack}	
+						height={128}
+						width={128}				
+						layout='fill'
+						alt='banner'
+					/>
+				</div>
+			</div>
+			<div className={style.collectionInfo}>
+				<div className={style.title}>{collection?.name}</div>
+			</div>
           <ListingsHome />
         </div>
       </TopNavbarLayout>

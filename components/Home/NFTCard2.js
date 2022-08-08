@@ -19,35 +19,34 @@ const style = {
 	likesCounter: `text-xs text-gray-500 dark:text-gray-400`,
 }
 
-const NFTcard = ({listing}) => {
-
+const NFTcard2 = ({nfts}) => {
 
 	return (
 		<div className={style.wrapper}>
 			<div className={style.imageContainer}>
 				<Image
 					className={style.nftImage}
-					src={listing.asset.image}
+					src={nfts.metadata.image}
 					height={340}
 					width={340}
 					alt = 'nft'
 				/>
 			</div>
-			<div className={style.lowerContainer}>
+			{/* <div className={style.lowerContainer}>
 				<div className={style.infoContainer}>
 					<div>
-						{listing.asset.collection && (
+						{nfts.asset.collection && (
 							<div className={style.collectionTitle}>
-								{listing.asset?.collection?.name}
+								{nfts.asset?.collection?.name}
 							</div>
 						)}
 
 						<div className={style.nftTitle}>
-							{listing.asset.name}
+							{nfts.asset.name}
 						</div>
 					</div>
 					<div className={style.priceContainer}>
-						<div className={style.priceTitle}>Bid at</div>
+						<div className={style.priceTitle}>Buy at</div>
 						<div className={style.wethImageContainer}>
 							<Image 
 								height={16}
@@ -56,7 +55,7 @@ const NFTcard = ({listing}) => {
 								alt='weth'
 							/>
 							<div className={style.priceValue}>
-								{listing.reservePriceCurrencyValuePerToken?.displayValue}
+								{nfts.buyoutCurrencyValuePerToken?.displayValue}
 							</div>
 
 						</div>
@@ -65,15 +64,12 @@ const NFTcard = ({listing}) => {
 				<div className = {style.likesContainer}>
 					<AiOutlineHeart className= {style.heartIcon} ></AiOutlineHeart>
 					<div className={style.likeCounter}>
-							{listing?.asset?.stats?.favorites ?? 0}
+							{nfts?.asset?.stats?.favorites ?? 0}
 					</div>
 				</div>
-
-				
-			</div>
-			
+			</div> */}
 		</div>
 	)
 }
 
-export default NFTcard
+export default NFTcard2

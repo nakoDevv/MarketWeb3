@@ -2,7 +2,7 @@ import { useState,  useEffect } from 'react'
 import Link from 'next/link'
 import { useMarketplace, ThirdwebNftMedia, useNFTCollection } from '@thirdweb-dev/react'
 import NFTCard  from './NFTCard'
-
+import NFTCard2  from './NFTCard2'
 const styles = {
 	wrapper: `mx-auto mt-10 grid max-w-fit flex-1 grid-cols-1 gap-8 p-10
 	pt-24 md:grid-cols-2 md:pt-0 lg:grid-cols-3 xl:grid-cols-4
@@ -12,10 +12,10 @@ const styles = {
 const Listings = () => {
 
 	const [listings, setListings] = useState({})
+	const [nfts, setNfts] = useState({})
 	const marketplace = useMarketplace("0x2e7f84B5C6d72Bd487532F42dF64B7d11c00838D")
-	const nftCollection = useNFTCollection("0x08d7c0242953446436f34b4c78fe9da38c73668d")
-	console.log(nftCollection)
-	
+	const nftCollection = useNFTCollection("0xB1709c0Cd6452562F0f13b75FE49c6912b3C2059")
+
 	useEffect(() => {
 		getListings()
 		getNFTs()
@@ -24,7 +24,7 @@ const Listings = () => {
 	const getNFTs = async () => {
 		try {
 			const nfts = await nftCollection.getAll()
-			console.log(nfts)
+			setNfts(nfts)
 		} catch (e) {
 			console.log(e)
 		}
@@ -34,6 +34,8 @@ const Listings = () => {
 	const getListings = async () => {
 		try {
 			const list = await marketplace.getActiveListings()
+			console.log(list)
+			console.log(list.reservePrice)
 			setListings(list)
 		} catch(e) {
 			console.log(e)
@@ -41,7 +43,8 @@ const Listings = () => {
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<>
+			<div className={styles.wrapper}>
 			{listings.length > 0 ? (
 				<>
 					{listings?.map((listing, index) => (
@@ -59,12 +62,28 @@ const Listings = () => {
 					<div>Loading</div>
 			)}
 
-			{/* {nftCollection ? (
-					<ThirdwebNftMedia metadata={nftCollection.metadata} />
-				) : (
-					<p>Loading...</p>
-				)}  */}
 		</div>
+		<div className={styles.wrapper}>
+			{nfts.length > 0 ? (
+				<>
+					{nfts.slice(0,4)?.map((nft, index) => (
+						<Link
+							href={`collection/CryptoApes`}
+							key={index}
+						>
+							<a>
+								<NFTCard2 nfts={nft} />
+							</a>
+						</Link>
+					))}
+				</>
+				) : (
+					<div>Loading</div>
+			)}
+
+		</div>
+		</>
+		
 	)
 }
 

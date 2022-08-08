@@ -7,9 +7,9 @@ function MyApp({ Component, pageProps }) {
   return (
 	<ThirdwebProvider 
 		desiredChainId = {ChainId.Goerli}
-		// chainRpc={{
-		// 	[ChainId.Goerli]:'https://2Ctb47Y0dPFdPxKPYtmGiKct5bb:2d09c373cdec81fabf719e07a71ff177@eth2-beacon-goerli.infura.io'
-		// }}
+		chainRpc={{
+			[ChainId.Goerli]:'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'
+		}}
 	>
 		<ThemeProvider>
 			<Component {...pageProps} />
