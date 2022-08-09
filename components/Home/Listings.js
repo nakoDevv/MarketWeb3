@@ -19,7 +19,7 @@ const Listings = () => {
 
 	const getListings = async () => {
 		try {
-			const list = await marketplace.getActiveListings()
+			const list = await marketplace.getAll()
 			setListings(list)
 		} catch(e) {
 			console.log(e)

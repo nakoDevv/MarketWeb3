@@ -1,9 +1,9 @@
-import Header from '../components/Header/Header'
+import NavBar from '../components/Header/NavBar'
 
 const TopNavbarLayout = ({children}) => {
 	return (
 		<>
-		<Header/>
+		<NavBar/>
 		<main> { children }</main>
 		</>
 	)

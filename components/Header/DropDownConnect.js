@@ -8,15 +8,14 @@ function classNames(...classes) {
 
 const DropDownConnect = ({connectMetamask, walletConnect, connectCoinbase}) => {
   return (
-	<div className='w-full h-20 flex justify-between items-center px-8 text-white'>
+	<div className='w-full h-8 flex justify-between items-center px-8 text-white'>
 	  <ul className='flex items-center'>
 	<Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-			Connect Wallet 
+        <Menu.Button className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-3 bg-black text-sm font-medium text-white-700 hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+			CONNECT WALLET 
         </Menu.Button>
       </div>
-
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
