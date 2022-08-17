@@ -1,22 +1,21 @@
 import Image from 'next/image'
-import { AiOutlineHeart } from 'react-icons/ai'
-
+import img from '../../assets/Golden Egg.png'
 
 const style = {
-	wrapper: `relative flex h-[450px] w-[340px] cursor-pointer 
+	wrapper: `relative flex h-[450px] cursor-pointer 
 	flex-col rounded-lg bg-white shadow-lg transition-all duration-300
 	hover:shadow-2x1 dark:bg-[white]`,
-	imageContainer: `h-3/4 overflow-hidden`,
+	imageContainer: `overflow-hidden`,
 	nftImage: `rounded-t-lg object-cover`,
 	lowerContainer: `flex h-1/4 flex-col justify-between p-4`,
 	infoContainer: `flex justify-between`,
-	collectionTitle: `text-sm text-gray-500 dark:text-gray-400`,
-	priceContainer: `flex flex-col items-end justify-center space-y-1`,
+	collectionTitle: `text-xs text-gray-500 dark:text-gray-400`,
+	nftTitle: `text-sm`,
+	priceContainer: `flex flex-col justify-center space-y-1`,
 	priceTitle: `text-xs font-light`,
-	wethImageContainer: `flex item-center justify-end space-x-2`,
-	likesContainer: `flex items-center justify-end space-x-2`,
-	heartIcon: `h-3 w-3 text-gray-500 dark:text-gray-400`,
-	likesCounter: `text-xs text-gray-500 dark:text-gray-400`,
+	wethImageContainer: `flex item-center space-x-2`,
+	likesContainer: `flex items-center justify-between space-y-4`,
+	button: `rounded-lg border border-black px-4 py-2 hover:bg-black hover:text-white bg-white text-sm`,
 }
 
 const NFTcard = ({listing}) => {
@@ -27,7 +26,8 @@ const NFTcard = ({listing}) => {
 			<div className={style.imageContainer}>
 				<Image
 					className={style.nftImage}
-					src={listing.asset.image}
+					// {listing.asset.image}
+					src={img}
 					height={340}
 					width={340}
 					alt = 'nft'
@@ -36,36 +36,39 @@ const NFTcard = ({listing}) => {
 			<div className={style.lowerContainer}>
 				<div className={style.infoContainer}>
 					<div>
-						{listing.asset.collection && (
+						{/* {listing.asset.collection && ( */}
 							<div className={style.collectionTitle}>
-								{listing.asset?.collection?.name}
+								{/* {listing.asset?.collection?.name} */}
+								PATH TO ALANGO
 							</div>
-						)}
+						{/* )} */}
 
 						<div className={style.nftTitle}>
-							{listing.asset.name}
-						</div>
-					</div>
-					<div className={style.priceContainer}>
-						<div className={style.priceTitle}>Bid at</div>
-						<div className={style.wethImageContainer}>
-							<Image 
-								height={16}
-								width={16}
-								src = '/weth-logo.svg'
-								alt='weth'
-							/>
-							<div className={style.priceValue}>
-								{listing.reservePriceCurrencyValuePerToken?.displayValue}
-							</div>
-
+							{/* {listing.asset.name} */}
+							REDISCOVERING ALANGO
 						</div>
 					</div>
 				</div>
 				<div className = {style.likesContainer}>
-					<AiOutlineHeart className= {style.heartIcon} ></AiOutlineHeart>
+					<div className={style.priceContainer}>
+						<div className={style.collectionTitle}>FLOOR PRICE</div>
+						<div className={style.wethImageContainer}>
+							{/* <Image 
+								height={16}
+								width={16}
+								src = '/weth-logo.svg'
+								alt='weth'
+							/> */}
+							<div className={style.priceValue}>
+								{/* {listing.reservePriceCurrencyValuePerToken?.displayValue} */}
+								0.18 ETH
+							</div>
+
+						</div>
+					</div>
 					<div className={style.likeCounter}>
-							{listing?.asset?.stats?.favorites ?? 0}
+						{/* {listing?.asset?.stats?.favorites ?? 0} */}
+						<button className={style.button}>BID NOW</button>
 					</div>
 				</div>
 

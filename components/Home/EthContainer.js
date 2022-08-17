@@ -4,8 +4,8 @@ import Image from 'next/image'
 const style = {
 	container: `flex h-[650px] flex-row`,
 	button: `inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 cursor-pointer`,
-	collectionInfoWrapper: `top-2/3 h-2/3 w-1/2 -translate-y-16 flex m-auto justify-center items-center`,
-	collectionInfoWrapperImg: `top-2/3 h-2/3 w-1/2 -translate-y-16 flex m-auto justify-start`,
+	collectionInfoWrapper: `top-2/3 h-2/3 w-1/2 -translate-y-16 flex m-auto justify-start items-center`,
+	collectionInfoWrapperImg: `top-2/3 h-2/3 w-1/2 -translate-y-16 flex m-auto justify-center`,
 	collectionInfoContainer: `flex flex-col items-center space-y-4`,
 	collectionLogoContainer: `flex items-center justify-center rounded-full border-4 border-gray-100`,
 	collectionLogo: `rounded-full object-cover`,
@@ -23,24 +23,6 @@ const style = {
 const EthContainer = () => {
   return (
 		<div className={style.container}>
-			<div className={style.collectionInfoWrapper}>
-				<div className={style.collectionInfoContainer}>
-
-
-					<div className={style.collectionInfo}>
-						<div className={style.title}>ETH Explore</div>
-					</div>
-						<div className={style.descriptionContainer}>
-						Reserved price:
-						</div>
-					<div className={style.descriptionContainer}>
-						0.001
-					</div>
-
-					<button className={style.button}>Place bid</button>
-				</div>
-			</div>
-
 			<div className={style.collectionInfoWrapperImg}>
 				<div className={style.collectionImgCon}>
 				<Image
@@ -50,6 +32,17 @@ const EthContainer = () => {
 				/>
 				</div>
 				
+			</div>
+			<div className={style.collectionInfoWrapper}>
+				<div className={style.collectionInfoContainer}>
+
+
+					<div className={style.collectionInfo}>
+						<div className={style.title}>ETH Marketplace</div>
+					</div>
+
+					<a href="/ethereum/marketplace" className={style.button}>Explore ETH</a>
+				</div>
 			</div>
 		</div>
   )

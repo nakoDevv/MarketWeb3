@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { useAddress, useMarketplace } from '@thirdweb-dev/react'
+import { useAddress, useMarketplace, useWinningBid } from '@thirdweb-dev/react'
 import { BigNumber } from 'ethers'
-
 import NFTImage from '../../../components/NFT/NFTImage'
 import TopNavbarLayout from '../../../layouts/TopNavbarLayout'
 
@@ -19,22 +18,15 @@ const NFT = () => {
 	const { tokenID } = router.query
 	const marketplace = useMarketplace("0x2e7f84B5C6d72Bd487532F42dF64B7d11c00838D")
 	const address = useAddress()
-	
+
 	useEffect(() => {
 		getListings()
 	}, [])
-	
-	useEffect(() => {
-		if(!address){
-			router.replace('/')
-		}	
-	},[address])
 
 	const getListings = async () => {
 		try {
 			setLoading(true)
-			const listing = await marketplace.getListing(BigNumber.from(tokenID))
-
+			const listing = await marketplace.getListing(tokenID)
 			setListings(listing)
 			setLoading(false)
 		} catch(e) {

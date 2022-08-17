@@ -22,19 +22,15 @@ const Navbar = () => {
 	{
 		name: 'ABOUT',
 		href: '#',
-	  },
+	},
     {
       name: 'MEMBERSHIP',
       href: '#',
     },
     {
-      name: 'DROPS',
+      name: 'MARKETPLACE',
       href: '#',
     },
-	{
-	name: 'EXPLORE',
-	href: '#',
-  	},
   ]
 
   const style = {

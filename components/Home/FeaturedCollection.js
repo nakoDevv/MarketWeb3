@@ -2,7 +2,7 @@ import { useState,  useEffect } from 'react'
 import Link from 'next/link'
 import { useMarketplace, ThirdwebNftMedia, useNFTCollection } from '@thirdweb-dev/react'
 import NFTCard  from './NFTCard'
-import NFTCard2  from './NFTCard2'
+// import NFTCard2  from './NFTCard2'
 
 const style = {
 	wrapper: `mx-auto mt-10 grid max-w-fit flex-1 grid-cols-1 gap-8 p-10
@@ -20,19 +20,19 @@ const FeaturedCollection = ({collection}) => {
 	const nftCollection = useNFTCollection("0xB1709c0Cd6452562F0f13b75FE49c6912b3C2059")
 
 	useEffect(() => {
-		getListings()
-		getNFTs()
+		// getListings()
+		// getNFTs()
 	}, [])
 
-	const getNFTs = async () => {
-		try {
-			const nfts = await nftCollection.getAll()
-			setNfts(nfts)
-		} catch (e) {
-			console.log(e)
-		}
+	// const getNFTs = async () => {
+	// 	try {
+	// 		const nfts = await nftCollection.getAll()
+	// 		setNfts(nfts)
+	// 	} catch (e) {
+	// 		console.log(e)
+	// 	}
 
-	}
+	// }
 
 	const getListings = async () => {
 		try {
@@ -48,7 +48,7 @@ const FeaturedCollection = ({collection}) => {
 	return (
 		<>
 			<div className={style.collectionInfo}>
-				<div className={style.title}>{collection?.name}</div>
+				<div className={style.title}>Featured Collection</div>
 			</div>
 			<div className={style.wrapper}>
 			{listings.length > 0 ? (
@@ -70,26 +70,6 @@ const FeaturedCollection = ({collection}) => {
 							<span className="visually-hidden"></span>
 						</div>
 					</div>
-			)}
-
-		</div>
-	
-		<div className={style.wrapper}>
-			{nfts.length > 0 ? (
-				<>
-					{nfts.slice(0,4)?.map((nft, index) => (
-						<Link
-							href={`collection/CryptoApes`}
-							key={index}
-						>
-							<a>
-								<NFTCard2 nfts={nft} />
-							</a>
-						</Link>
-					))}
-				</>
-				) : (
-					<div>Loading</div>
 			)}
 
 		</div>

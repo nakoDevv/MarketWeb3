@@ -4,7 +4,7 @@ import { useMarketplace } from '@thirdweb-dev/react'
 import NFTCard  from './NFTCard'
 
 const styles = {
-	wrapper: `mx-auto grid max-w-fit flex-1 grid-cols-1 gap-8 p-10
+	wrapper: `mx-auto mt-12 grid max-w-fit flex-1 grid-cols-1 gap-8 p-10
 	pt-24 md:grid-cols-2 md:pt-0 lg:grid-cols-3 xl:grid-cols-4
 	2xl:grid-cols-5`
 }
@@ -19,7 +19,7 @@ const Listings = () => {
 
 	const getListings = async () => {
 		try {
-			const list = await marketplace.getAll()
+			const list = await marketplace.getActiveListings()
 			setListings(list)
 		} catch(e) {
 			console.log(e)
@@ -27,7 +27,7 @@ const Listings = () => {
 	}
 	return (
 		<div className={styles.wrapper}>
-		{listings.length > 0 ? (
+		{/* {listings.length > 0 ? (
 			<>
 				{listings?.map((listing, index) => (
 					<Link
@@ -42,7 +42,16 @@ const Listings = () => {
 			</>
 			) : (
 				<div>Loading</div>
-			)}
+			)} */}
+
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
+			<NFTCard />
 		</div>
 	)
 }
